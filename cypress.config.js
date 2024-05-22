@@ -11,9 +11,10 @@ module.exports = defineConfig({
   e2e: {
     specPattern: "**/*.feature",
     env: {
-      // TAGS: "@only",
+      apiUrl: "https://raromdb-3c39614e42d4.herokuapp.com",
+      TAGS: "not @ignore",
     },
-    baseUrl: "https://rarocrud-qa-frontend-35c1b23b7bac.herokuapp.com",
+    baseUrl: "https://raromdb-frontend-c7d7dc3305a0.herokuapp.com",
     async setupNodeEvents(on, config) {
       // implement node event listeners here
       await addCucumberPreprocessorPlugin(on, config);
