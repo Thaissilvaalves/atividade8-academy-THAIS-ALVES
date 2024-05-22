@@ -10,8 +10,6 @@ import { fakerPT_BR } from "@faker-js/faker";
 import LoginPage from "../pages/login.page";
 
 var loginPage = new LoginPage();
-var email;
-var senha;
 
 Before({ tags: "@cadastroUsuario" }, () => {
   cy.cadastrarUsuario();
@@ -31,10 +29,26 @@ When("digitar o e-mail", function () {
   });
 });
 
+When("digitar um e-mail diferente do cadastrado", function () {
+  loginPage.typeEmail("thais@gmail.com");
+});
+
 When("digitar a senha", function () {
-  cy.get("@usuarioExistente").then(function (resposta) {
-    loginPage.typeSenha(resposta.body.password);
-  });
+  loginPage.typeSenha("123456");
+});
+
+When("digitar um e-mail não cadastrado", function () {
+  var email = fakerPT_BR.internet.email();
+  loginPage.typeEmail(email);
+});
+
+When("digitar uma senha não cadastrada", function () {
+  var senha = fakerPT_BR.internet.password(8);
+  loginPage.typeSenha(senha);
+});
+
+When("digitar a senha incorreta", function () {
+  loginPage.typeSenha("987654");
 });
 
 When("confirmar a operação", function () {
@@ -46,4 +60,27 @@ Then("é possível logar com sucesso", function () {
     "equal",
     "https://raromdb-frontend-c7d7dc3305a0.herokuapp.com/"
   );
+  cy.contains("Perfil").should("be.visible");
+});
+
+Then("o sistema retorna mensagem para informar o e-mail", () => {
+  cy.contains("Informe o e-mail").should("be.visible");
+});
+
+Then("o sistema retorna mensagem para informar a senha", () => {
+  cy.contains("Informe a senha").should("be.visible");
+});
+
+Then("o sistema retorna mensagem de falha no login", () => {
+  cy.contains("Falha ao autenticar").should("be.visible");
+  cy.contains("Usuário ou senha inválidos.").should("be.visible");
+  loginPage.clickOk();
+});
+
+Then("o sistema retorna mensagem de senha incorreta", () => {
+  cy.contains("Informe a senha").should("be.visible");
+});
+
+Then("não é possível logar", () => {
+  cy.contains("Informe a senha").should("be.visible");
 });

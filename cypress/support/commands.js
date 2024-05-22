@@ -3,7 +3,7 @@ import { fakerPT_BR } from "@faker-js/faker";
 Cypress.Commands.add("cadastrarUsuario", function () {
   var nome = fakerPT_BR.person.firstName();
   var email = fakerPT_BR.internet.email();
-  var senha = fakerPT_BR.internet.password(8);
+  var senha = "123456";
   return cy
     .request({
       method: "POST",
@@ -19,7 +19,6 @@ Cypress.Commands.add("cadastrarUsuario", function () {
       idUsuario = resposta.body.id;
       nome = resposta.body.name;
       email = resposta.body.email;
-      senha = resposta.body.password;
 
       //   return cy.wrap({
       //     name: nome,

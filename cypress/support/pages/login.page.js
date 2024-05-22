@@ -2,7 +2,7 @@ export default class LoginPage {
   inputEmail = "[placeholder='E-mail']";
   inputSenha = "[placeholder='Password']";
   buttonLogin = ".login-button";
-  buttonOk = "button";
+  buttonOk = ".modal-actions > button";
 
   typeEmail(email) {
     cy.get(this.inputEmail).type(email);
@@ -16,7 +16,7 @@ export default class LoginPage {
     cy.get(this.buttonLogin).click();
   }
 
-  clickOK() {
+  clickOk() {
     cy.get(this.buttonOk).click();
   }
 }
