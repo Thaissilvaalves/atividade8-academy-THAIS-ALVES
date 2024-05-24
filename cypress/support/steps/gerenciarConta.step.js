@@ -2,7 +2,6 @@ import {
   Given,
   When,
   Then,
-  After,
   Before,
 } from "@badeball/cypress-cucumber-preprocessor";
 
@@ -22,10 +21,6 @@ Before(function () {
     gerenciaPage.typeSenha("123456");
     loginPage.clickLogin();
   });
-});
-
-After(function () {
-  cy.deletarUsuario();
 });
 
 Given("que acessei a funcionalidade de gerenciamento de conta", function () {

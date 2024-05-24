@@ -2,7 +2,6 @@ import {
   Given,
   When,
   Then,
-  After,
   Before,
 } from "@badeball/cypress-cucumber-preprocessor";
 
@@ -14,10 +13,6 @@ var loginPage = new LoginPage();
 
 Before({ tags: "@cadastroUsuario" }, () => {
   cy.cadastrarUsuario();
-});
-
-After({ tags: "@cadastroUsuario" }, () => {
-  cy.deletarUsuario();
 });
 
 Given("que acessei a página de login", function () {

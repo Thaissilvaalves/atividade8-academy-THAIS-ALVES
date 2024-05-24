@@ -8,6 +8,7 @@ export default class GerenciaPage {
   buttonOk = ".modal-actions > button";
   buttonCancelar = ".account-password-button-cancel";
   linkPerfil = '[href="/profile"]';
+  linkLogout = '[href="/logout"]';
   linkGerenciarConta = '[href="/account"]';
   msgFormulario = ".input-error";
 
@@ -41,6 +42,10 @@ export default class GerenciaPage {
 
   clickGerenciarConta() {
     cy.get(this.linkGerenciarConta).click();
+  }
+
+  clickLogout() {
+    cy.get(this.linkLogout).click();
   }
 
   clickOk() {
