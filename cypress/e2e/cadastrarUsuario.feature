@@ -5,6 +5,7 @@ Funcionalidade: Cadastrar usuário
 Contexto: Usuário deve ter acessado a página de cadastro
   Dado que acessei a funcionalidade de cadastro
 
+
 Cenário: Deve ser possível cadastrar um usuário com sucesso
   Quando informar um novo nome
   E informar um novo e-mail
@@ -50,6 +51,7 @@ Cenário: Deve ser possível cadastrar um usuário com sucesso
   E confirmar a operação
   Então deverá aparecer um alerta de senha divergente
 
+
   Cenário: Deve ser possível cadastrar uma senha com 12 caracteres
   Quando informar um novo nome
   E informar um novo e-mail
@@ -65,6 +67,7 @@ Cenário: Deve ser possível cadastrar um usuário com sucesso
   E confirmar a senha com 13 caracteres "1111111111111"
   E confirmar a operação
   Então deverá aparecer um alerta de que a senha deve ter no máximo 12 caracteres 
+
 
   Cenário: Deve ser possível cadastrar uma senha com 6 caracteres
   Quando informar um novo nome
